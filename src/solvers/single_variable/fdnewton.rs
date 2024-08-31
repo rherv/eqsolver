@@ -173,12 +173,12 @@ where
             iter += 1;
         }
 
-        if iter >= self.iter_max {
-            return Err(SolverError::MaxIterReached);
-        }
-
         if x0.is_nan() {
             return Err(SolverError::NotANumber);
+        }
+
+        if iter >= self.iter_max {
+            return Ok(x0);
         }
 
         Ok(x0)
